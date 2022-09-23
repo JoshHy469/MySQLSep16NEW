@@ -33,11 +33,11 @@ namespace MySQLSep16.DataAccess
         }
         public List<int> GetYears()
         {
-            string sql = "SELECT DISTINCT `Year` FROM `car_basic`";
+            string sql = "SELECT DISTINCT Year FROM car_basic";
 
-            List<int> cars = _db.LoadData<int, dynamic>(sql, new { });
+            List<int> years = _db.LoadData<int, dynamic>(sql, new { });
 
-            return cars; 
+            return years; 
 
         }
         public List<CarModel> GetAllCars()
@@ -47,11 +47,27 @@ namespace MySQLSep16.DataAccess
 
             return cars; 
         }
+        public CarModel GetCarByID(int ID)
+        {
+            string sql = "SELECT * FROM car_basic WHERE CarID = @CarID";
+            List<CarModel> car = _db.LoadData<CarModel, dynamic>(sql, new { CarID = ID });
+
+            return car.FirstOrDefault(u => u.CarID == ID); 
+        }
         public void CreateCar(CarModel c)
         {
             string sql = "INSERT INTO `car_basic` (`Year`, `Make`, `Model`) VALUES (@Year, @Make, @Model)";
 
             _db.SaveData(sql, c);
+        }
+
+        public void DeleteCar(CarModel c)
+        {
+            string sql = "DELETE FROM car_basic WHERE car_basic.CarID = @CarID";
+
+            _db.SaveData(sql, c);
+
+
         }
         /*
         public List<CarModel> GetAllCars()

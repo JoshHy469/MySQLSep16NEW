@@ -25,20 +25,21 @@ CarModel car1 = new CarModel()
 };
     
 cardata.CreateCar(car1);
+cardata.DeleteCar(cardata.GetCarByID(12));
 
 foreach(CarModel car in cars) { 
 
     Console.WriteLine($"CarID:{car.CarID}, Year: {car.Year}, Make:{car.Make}, Model: {car.Model}");
 }
 
-foreach(int car in CarYear)
+foreach(int year in CarYear)
 {
-    Console.WriteLine(car);
+    Console.WriteLine("Year: " + year);
 }
 
-foreach(string car in CarMake)
+foreach(string make in CarMake)
 {
-    Console.WriteLine(car);
+    Console.WriteLine("Make: " + make);
 }
 
 foreach(CarModel car in CarSearchYear)
