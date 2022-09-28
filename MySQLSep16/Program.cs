@@ -5,48 +5,72 @@ using MySQLSep16.Models;
 using System;
 using System.Collections.Concurrent;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Lets test our bank transactions!");
 
-CarData cardata = new CarData();
-
-List<CarModel> cars = cardata.GetAllCars();
-
-List<int> CarYear = cardata.GetYears();
-
-List<string> CarMake = cardata.GetMake();
-
-List<CarModel> CarSearchYear = cardata.SearchYear();
-
-CarModel car1 = new CarModel()
+BankModel transaction = new BankModel
 {
-    Year = 2022,
-    Make = "Ford",
-    Model = "F-150 Lightining"
+    Amt = 1000000,
+    txDate = DateTime.Now,
+    txID = 1
+
 };
-    
-cardata.CreateCar(car1);
-cardata.DeleteCar(cardata.GetCarByID(12));
 
-foreach(CarModel car in cars) { 
+BankData banker = new BankData();
 
-    Console.WriteLine($"CarID:{car.CarID}, Year: {car.Year}, Make:{car.Make}, Model: {car.Model}");
-}
-
-foreach(int year in CarYear)
-{
-    Console.WriteLine("Year: " + year);
-}
-
-foreach(string make in CarMake)
-{
-    Console.WriteLine("Make: " + make);
-}
-
-foreach(CarModel car in CarSearchYear)
-{
-    Console.WriteLine($"CarID:{car.CarID}, Year: {car.Year}, Make:{car.Make}, Model: {car.Model}");
-}
-
+banker.CreateTransaction(transaction);
 
 Console.ReadLine();
+
+static void RunCarStuff()
+{
+    CarData cardata = new CarData();
+    List<CarModel> cars = cardata.GetAllCars();
+
+    List<int> CarYear = cardata.GetYears();
+
+    List<string> CarMake = cardata.GetMake();
+
+    List<CarModel> CarSearchYear = cardata.SearchYear();
+
+    CarModel car1 = new CarModel()
+    {
+        Year = 2022,
+        Make = "Ford",
+        Model = "F-150 Lightining"
+    };
+
+    //cardata.CreateCar(car1);
+
+
+    foreach (CarModel car in cars)
+    {
+
+        Console.WriteLine($"CarID:{car.CarID}, Year: {car.Year}, Make:{car.Make}, Model: {car.Model}");
+    }
+
+    CarModel carHold = cardata.GetCarByID(12);
+    carHold.Make = car1.Make;
+    carHold.Model = car1.Model;
+    carHold.Year = car1.Year;
+
+    cardata.UpdateCar(carHold);
+
+    foreach (int year in CarYear)
+    {
+        Console.WriteLine("Year: " + year);
+    }
+
+    foreach (string make in CarMake)
+    {
+        Console.WriteLine("Make: " + make);
+    }
+
+    foreach (CarModel car in CarSearchYear)
+    {
+        Console.WriteLine($"CarID:{car.CarID}, Year: {car.Year}, Make:{car.Make}, Model: {car.Model}");
+    }
+}
+
+
+
 

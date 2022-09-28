@@ -33,6 +33,27 @@ namespace MySQLSep16.DataAccess
 
             }
         }
+
+        private string BconnectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_bank;";
+
+        public List<T> BankLoadData<T, U>(string sql, U parameters)
+        {
+            using (IDbConnection connection = new MySqlConnection(BconnectionString))
+            {
+                var data = connection.Query<T>(sql, parameters);
+                return data.ToList();
+            }
+        }
+
+        //save is equal to chaning/add/deleting
+        public void BankSaveData<T>(string sql, T parameters)
+        {
+            using (IDbConnection connection = new MySqlConnection(BconnectionString))
+            {
+                connection.Execute(sql, parameters);
+
+            }
+        }
     }   
 
 }

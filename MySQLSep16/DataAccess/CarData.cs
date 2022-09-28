@@ -60,7 +60,11 @@ namespace MySQLSep16.DataAccess
 
             _db.SaveData(sql, c);
         }
-
+        public void UpdateCar(CarModel c)
+        {
+            string sql = "UPDATE `car_basic` SET `Year` = @Year, `Make` = @Make, `Model` = @Model WHERE `car_basic`.`CarID` = @CarID";
+            _db.SaveData(sql, c);
+        }
         public void DeleteCar(CarModel c)
         {
             string sql = "DELETE FROM car_basic WHERE car_basic.CarID = @CarID";
