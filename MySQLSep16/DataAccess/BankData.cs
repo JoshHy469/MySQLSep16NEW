@@ -36,5 +36,12 @@ namespace MySQLSep16.DataAccess
             _db.SaveData(sql, bT);
         }
 
+        public List<BankModel> ReadAllTransactionsWithType()
+        {
+            string sql = "SELECT tx_histor.txID, tx_history.Amt, tx_history.Date, tx_type.Type FROM tx_history INNER JOIN ty_type ON tx_history.tx_type_typeID=tx_type.typeID";
+            List<BankModel> BankTransactions = _db.LoadData<BankModel, dynamic>(sql, new { });
+
+            return BankTransactions;
+        }
     }
 }
