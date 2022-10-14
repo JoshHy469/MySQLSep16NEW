@@ -34,7 +34,7 @@ namespace MySQLSep16.DataAccess
             }
         }
 
-        private string BconnectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_bank;";
+        private string BconnectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_garage;";
 
         public List<T> BankLoadData<T, U>(string sql, U parameters)
         {

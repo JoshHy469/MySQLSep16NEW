@@ -5,23 +5,30 @@ using MySQLSep16.Models;
 using System;
 using System.Collections.Concurrent;
 
-<<<<<<< HEAD
+
 Console.WriteLine("Lets test our bank transactions!");
-=======
+
 
 // this is a test for commit
 Console.WriteLine("Hello, World!");
->>>>>>> 8b6315dd562c1cc6469aea668533ee5eca946fc9
+
 
 BankModel transaction = new BankModel
 {
     Amt = 1000000,
     txDate = DateTime.Now,
-    txID = 1
+    tx_type_typeID = 1
 
 };
 
 BankData banker = new BankData();
+
+List<BankModel> transactions = banker.ReadAllTransactionsWithType();
+
+foreach(BankModel b in transactions)
+{
+    Console.WriteLine(b);
+}
 
 banker.CreateTransaction(transaction);
 

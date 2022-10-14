@@ -9,6 +9,7 @@ namespace MySQLSep16.Models
 {
     internal class BankModel
     {
+        public int tx_type_typeID { get; set; }
         public int txID { get; set; }
         public decimal Amt { get; set; }
         public DateTime txDate { get; set; }
