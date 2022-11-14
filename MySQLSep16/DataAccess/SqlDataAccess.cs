@@ -13,7 +13,7 @@ namespace MySQLSep16.DataAccess
 {
     internal class SqlDataAccess : ISqlDataAccess
     {
-        private string connectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_garage;";
+        private string connectionString = "server=KENWB1PCI29;port=3306;uid=KITEPlayer;pwd=KITERules!;database=car_test;";
 
         public List<T> LoadData<T, U>(string sql, U parameters)
         {
@@ -34,7 +34,7 @@ namespace MySQLSep16.DataAccess
             }
         }
 
-        private string BconnectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_garage;";
+        private string BconnectionString = "server=KENWB1PCI29;port=3306;uid=KITEPlayer;pwd=KITERules!;database=car_test;";
 
         public List<T> BankLoadData<T, U>(string sql, U parameters)
         {

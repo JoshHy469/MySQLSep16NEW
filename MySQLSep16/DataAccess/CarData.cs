@@ -10,7 +10,7 @@ namespace MySQLSep16.DataAccess
 {
     internal class CarData
     {
-        private string connectionString = "server=localhost;port=3306;uid=appDev;pwd=AppDev;database=db_garage;";
+        private string connectionString = "server=KENWB1PCI29;port=3306;uid=KITEPlayer;pwd=KITERules!;database=car_test;";
 
         private readonly ISqlDataAccess _db = new SqlDataAccess();
 
